@@ -1,5 +1,41 @@
 <div class="trading-page">
 
+  <div class="panel portfolio">
+
+    <h3>
+      Portfolio
+    </h3>
+
+    <div class="portfolio-row">
+
+      <span>
+        USD Balance
+      </span>
+
+      <span>
+
+        {{ portfolio?.usd | number:'1.2-2' }}
+
+      </span>
+
+    </div>
+
+    <div class="portfolio-row">
+
+      <span>
+        BTC Position
+      </span>
+
+      <span>
+
+        {{ portfolio?.btc }}
+
+      </span>
+
+    </div>
+
+  </div>
+
   <div class="trading-layout">
 
     <!-- ORDER FORM -->
@@ -111,6 +147,47 @@
           Cancel
 
         </button>
+
+      </div>
+
+    </div>
+
+    <div class="panel trade-history">
+
+      <h3>
+        Trade History
+      </h3>
+
+      <div
+        *ngFor="let order of filledOrders"
+        class="order-row">
+
+        <span
+          class="side"
+          [class.buy]="order.side === 'buy'"
+          [class.sell]="order.side === 'sell'">
+
+          {{ order.side.toUpperCase() }}
+
+        </span>
+
+        <span class="price">
+
+          {{ order.price }}
+
+        </span>
+
+        <span class="size">
+
+          {{ order.size }}
+
+        </span>
+
+        <span class="status filled">
+
+          FILLED
+
+        </span>
 
       </div>
 

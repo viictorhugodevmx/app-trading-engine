@@ -10,8 +10,9 @@
 
   display: grid;
   grid-template-columns: 420px 1fr;
+  grid-template-rows: auto auto;
+
   gap: 20px;
-  align-items: start;
 
 }
 
@@ -207,5 +208,28 @@
 
   opacity: 0.5;
   cursor: not-allowed;
+
+}
+
+.trade-history {
+
+  grid-column: 2;
+  grid-row: 2;
+
+}
+
+.portfolio {
+
+  margin-bottom: 20px;
+
+}
+
+.portfolio-row {
+
+  display: flex;
+  justify-content: space-between;
+
+  padding: 6px 0;
+  font-size: 14px;
 
 }

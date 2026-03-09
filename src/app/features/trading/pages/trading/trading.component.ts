@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { OnInit, OnDestroy } from '@angular/core'
 import { interval, Subscription } from 'rxjs'
+import { PortfolioService } from '../../../../core/services/portfolio.service';
+import { Portfolio } from '../../../../shared/models/portfolio.model';
 @Component({
   selector: 'app-trading',
   imports: [FormsModule, CommonModule],
@@ -17,9 +19,14 @@ export class TradingComponent implements OnInit, OnDestroy {
   price: number = 0
   size: number = 0
   orders: Order[] = []
+  filledOrders: Order[] = []
   private fillSub?: Subscription
+  portfolio?: Portfolio
 
-  constructor(private engine: TradingEngineService) {}
+  constructor(
+    private engine: TradingEngineService,
+    private portfolioService: PortfolioService
+  ) {}
 
   ngOnInit(): void {
 
@@ -57,11 +64,17 @@ export class TradingComponent implements OnInit, OnDestroy {
 
   }
 
-  loadOrders() {
+    loadOrders() {
 
-    this.orders = this.engine.getOrders()
+      const allOrders = this.engine.getOrders()
 
-  }
+      this.orders = allOrders.filter(o => o.status === 'open')
+
+      this.filledOrders = allOrders.filter(o => o.status === 'filled')
+
+      this.portfolio = this.portfolioService.getPortfolio()
+
+    }
 
   cancelOrder(orderId: number) {
 

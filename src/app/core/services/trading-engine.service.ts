@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Order } from '../../shared/models/order.model'
+import { PortfolioService } from './portfolio.service'
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,8 @@ import { Order } from '../../shared/models/order.model'
 export class TradingEngineService {
 
   private orders: Order[] = []
+
+  constructor(private portfolio: PortfolioService) {}
 
   placeOrder(order: Order) {
 
@@ -33,9 +36,12 @@ export class TradingEngineService {
     if (openOrders.length === 0) return
 
     const randomIndex = Math.floor(Math.random() * openOrders.length)
+
     const selectedOrder = openOrders[randomIndex]
 
     selectedOrder.status = 'filled'
+
+    this.portfolio.applyTrade(selectedOrder)
 
   }
 
