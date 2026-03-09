@@ -20,4 +20,23 @@ export class TradingEngineService {
 
   }
 
+  cancelOrder(orderId: number) {
+
+    this.orders = this.orders.filter(o => o.id !== orderId)
+
+  }
+
+  fillRandomOrder() {
+
+    const openOrders = this.orders.filter(o => o.status === 'open')
+
+    if (openOrders.length === 0) return
+
+    const randomIndex = Math.floor(Math.random() * openOrders.length)
+    const selectedOrder = openOrders[randomIndex]
+
+    selectedOrder.status = 'filled'
+
+  }
+
 }

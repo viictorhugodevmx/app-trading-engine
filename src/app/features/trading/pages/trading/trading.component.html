@@ -75,6 +75,45 @@
 
       <!-- aquí aparecerán las órdenes -->
 
+      <div *ngFor="let order of orders" class="order-row">
+
+        <span
+          class="side"
+          [class.buy]="order.side === 'buy'"
+          [class.sell]="order.side === 'sell'">
+
+          {{ order.side.toUpperCase() }}
+
+        </span>
+
+        <span class="price">
+          {{ order.price }}
+        </span>
+
+        <span class="size">
+          {{ order.size }}
+        </span>
+
+        <span
+          class="status"
+          [class.open]="order.status === 'open'"
+          [class.filled]="order.status === 'filled'">
+
+          {{ order.status.toUpperCase() }}
+
+        </span>
+
+        <button
+          class="cancel-btn"
+          (click)="cancelOrder(order.id)"
+          [disabled]="order.status !== 'open'">
+
+          Cancel
+
+        </button>
+
+      </div>
+
     </div>
 
   </div>

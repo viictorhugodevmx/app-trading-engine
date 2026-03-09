@@ -131,3 +131,81 @@
   background: #1d4ed8;
 
 }
+
+.open-orders {
+
+  min-width: 300px;
+
+}
+
+.order-row {
+
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr 100px 80px;
+
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+
+  font-size: 14px;
+  align-items: center;
+
+}
+
+.side {
+
+  font-weight: 700;
+
+}
+
+.side.buy {
+
+  color: #22c55e;
+
+}
+
+.side.sell {
+
+  color: #ef4444;
+
+}
+
+.cancel-btn {
+
+  border: none;
+  background: #ef4444;
+  color: white;
+
+  padding: 4px 8px;
+  border-radius: 4px;
+
+  font-size: 12px;
+  cursor: pointer;
+
+}
+
+
+.status {
+
+  font-weight: 700;
+  font-size: 12px;
+
+}
+
+.status.open {
+
+  color: #f59e0b;
+
+}
+
+.status.filled {
+
+  color: #22c55e;
+
+}
+
+.cancel-btn:disabled {
+
+  opacity: 0.5;
+  cursor: not-allowed;
+
+}
