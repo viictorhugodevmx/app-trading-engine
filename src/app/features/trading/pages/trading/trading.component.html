@@ -1,0 +1,82 @@
+<div class="trading-page">
+
+  <div class="trading-layout">
+
+    <!-- ORDER FORM -->
+
+    <div class="panel order-form">
+
+      <h3>
+        Place Order
+      </h3>
+
+      <div class="order-buttons">
+
+        <button
+          class="buy-btn"
+          (click)="side = 'buy'">
+
+          BUY
+
+        </button>
+
+        <button
+          class="sell-btn"
+          (click)="side = 'sell'">
+
+          SELL
+
+        </button>
+
+      </div>
+
+      <div class="form-row">
+
+        <label>
+          Price
+        </label>
+
+        <input
+          type="number"
+          [(ngModel)]="price">
+
+      </div>
+
+      <div class="form-row">
+
+        <label>
+          Size
+        </label>
+
+        <input
+          type="number"
+          [(ngModel)]="size">
+
+      </div>
+
+      <button
+        class="submit-order"
+        (click)="submitOrder()">
+
+        Submit Order
+
+      </button>
+
+    </div>
+
+
+    <!-- OPEN ORDERS -->
+
+    <div class="panel open-orders">
+
+      <h3>
+        Open Orders
+      </h3>
+
+      <!-- aquí aparecerán las órdenes -->
+
+    </div>
+
+  </div>
+
+</div>
